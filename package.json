@@ -15,9 +15,9 @@
   ],
   "scripts": {
     "build": "concurrently --kill-others-on-fail webpack -p --progress",
-    "dev": "concurrently --kill-others-on-fail \"webpack-dev-server --open --mode development -d\" \"sucrase-node ./server/server.js\"",
-    "server": "sucrase-node ./server/server.js",
-    "server:debug": "nodemon --inspect sucrase-node ./server/server.js",
+    "start": "concurrently --kill-others-on-fail \"webpack-dev-server --open --mode development -d\" \"sucrase-node ./server/\"",
+    "server": "sucrase-node ./server/",
+    "server:debug": "nodemon --inspect sucrase-node ./server/",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
@@ -31,6 +31,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
     "core-js": "^3.6.5",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
