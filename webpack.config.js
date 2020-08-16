@@ -6,16 +6,16 @@ const path = require('path');
 
 module.exports = {
 
-	entry: path.resolve(__dirname, './app/index.js'),
+	entry: path.resolve(__dirname, './client/index.js'),
 	output: {
-		path: path.resolve(__dirname, './app/dist/'),
+		path: path.resolve(__dirname, './client/dist/'),
 		filename: '[name].js',
 	},
 
 	devtool: 'inline-source-map',
 	plugins: [
 		new HtmlWebpackPlugin({
-			template: path.resolve(__dirname, './app/src/index.html'),
+			template: path.resolve(__dirname, './client/src/index.html'),
 		}),
 	],
 	module: {

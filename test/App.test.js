@@ -6,8 +6,8 @@ import {
 	mount,
 } from 'enzyme';
 
-import App from '../app/src/App';
-import Hello from '../app/src/components/hello';
+import App from '../client/src/App';
+import Hello from '../client/src/components/hello';
 
 
 describe('App', () => {
