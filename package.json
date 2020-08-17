@@ -14,7 +14,7 @@
     "Boilerplate React Node"
   ],
   "scripts": {
-    "build": "concurrently --kill-others-on-fail webpack -p --progress",
+    "build": "concurrently --kill-others-on-fail \"webpack -p --progress\" \"sucrase ./server -d ./dist --transforms imports\"",
     "start": "concurrently --kill-others-on-fail \"webpack-dev-server --open --mode development -d\" \"sucrase-node ./server/\"",
     "server": "sucrase-node ./server/",
     "server:debug": "nodemon --inspect sucrase-node ./server/",

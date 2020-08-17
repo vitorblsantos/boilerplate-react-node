@@ -8,8 +8,8 @@ module.exports = {
 
 	entry: path.resolve(__dirname, './client/index.js'),
 	output: {
-		path: path.resolve(__dirname, './client/dist/'),
-		filename: '[name].js',
+		path: path.resolve(__dirname, './dist/'),
+		filename: 'bundle.js',
 	},
 
 	devtool: 'inline-source-map',
@@ -26,6 +26,5 @@ module.exports = {
 				loader: 'babel-loader',
 			},
 		],
-	},
-	watch: true,
+	}
 };
