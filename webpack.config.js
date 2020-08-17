@@ -13,6 +13,9 @@ module.exports = {
 	},
 
 	devtool: 'inline-source-map',
+	devServer: {
+		contentBase: __dirname + '/dist/view' 
+	},
 	plugins: [
 		new HtmlWebpackPlugin({
 			template: path.resolve(__dirname, './client/src/index.html'),
@@ -26,5 +29,8 @@ module.exports = {
 				loader: 'babel-loader',
 			},
 		],
-	}
+	},
+	optimization: {
+        splitChunks: false,
+    },
 };

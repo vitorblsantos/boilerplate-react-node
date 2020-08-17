@@ -12,9 +12,8 @@ import routes from './routes';
 const server = express();
 
 server.disable('x-powered-by')
-
 server.use(compression());
 server.use(cors());
 server.use(json());
 server.use(routes);
-server.listen(process.env.API_PORT || 5000);
+server.listen(process.env.PORT || 5000);
