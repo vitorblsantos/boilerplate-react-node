@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "build": "concurrently --kill-others-on-fail \"webpack -p --progress\" \"sucrase ./server -d ./dist --transforms imports\"",
-    "start": "concurrently --kill-others-on-fail \"webpack-dev-server --open --mode development -d\" \"sucrase-node ./server/\"",
+    "start": "concurrently --kill-others-on-fail \"webpack-dev-server --open --mode production -d\" \"sucrase-node ./dist\"",
     "server": "sucrase-node ./server/",
     "server:debug": "nodemon --inspect sucrase-node ./server/",
     "test": "jest",
@@ -40,7 +40,9 @@
     "fs": "^0.0.1-security",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-is": "^16.13.1"
+    "react-is": "^16.13.1",
+    "sucrase": "^3.15.0",
+    "webpack-dev-server": "^3.11.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.1",
@@ -70,10 +72,8 @@
     "nodemon": "^2.0.4",
     "path": "^0.12.7",
     "react-test-renderer": "^16.13.1",
-    "sucrase": "^3.15.0",
     "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-cli": "^3.3.12"
   },
   "resolutions": {
     "chokidar": "^3.4.0"
