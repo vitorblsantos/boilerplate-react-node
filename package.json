@@ -14,7 +14,8 @@
     "Boilerplate React Node"
   ],
   "scripts": {
-    "build": "concurrently --kill-others-on-fail \"webpack -p --progress\" \"sucrase ./server -d ./dist --transforms imports\"",
+    "build": "concurrently --kill-others-on-fail \"environment=production webpack -p --progress\" \"sucrase ./server -d ./dist --transforms imports\"",
+    "build:dev": "concurrently --kill-others-on-fail \"webpack -p --progress\" \"sucrase ./server -d ./dist --transforms imports\"",
     "start": "concurrently --kill-others-on-fail \"node ./dist\"",
     "server": "sucrase-node ./server/",
     "server:debug": "nodemon --inspect sucrase-node ./server/",
@@ -41,13 +42,13 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "fs": "^0.0.1-security",
     "html-webpack-plugin": "^4.3.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-is": "^16.13.1",
     "sucrase": "^3.15.0",
     "webpack": "^4.44.1",
+    "webpack-bundle-tracker": "^1.0.0-alpha.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
   },
