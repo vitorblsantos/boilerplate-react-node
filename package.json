@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "build": "concurrently --kill-others-on-fail \"webpack -p --progress\" \"sucrase ./server -d ./dist --transforms imports\"",
-    "start": "concurrently --kill-others-on-fail \"webpack-dev-server --open --mode production -d\" \"sucrase-node ./dist\"",
+    "start": "concurrently --kill-others-on-fail \"node ./dist\"",
     "server": "sucrase-node ./server/",
     "server:debug": "nodemon --inspect sucrase-node ./server/",
     "test": "jest",

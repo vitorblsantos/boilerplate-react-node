@@ -5,7 +5,7 @@ import Axios from 'axios';
 const Hello = () => {
 	const [message, setMessage] = useState('');
 	useEffect(() => {
-		Axios.get('http://localhost:5000').then(({data}) => setMessage(data));
+		Axios.get('http://localhost:5000/api').then(({data}) => setMessage(data));
 	}, [])
 	return <h1>{message}</h1>;
 };
