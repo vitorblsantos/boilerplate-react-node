@@ -1,6 +1,6 @@
 'use strict';
 
-import 'dotenv/config';
+import dotenv from 'dotenv';
 
 import { json } from 'body-parser';
 import compression from 'compression';
@@ -12,6 +12,7 @@ import routes from './routes';
 
 const server = express();
 
+dotenv.config();
 server.disable('x-powered-by')
 server.use(cors());
 server.use(compression());
