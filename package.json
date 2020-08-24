@@ -14,14 +14,14 @@
     "Boilerplate React Node"
   ],
   "scripts": {
-    "build": "concurrently --kill-others-on-fail \"webpack -p --progress\" \"sucrase ./server -d ./dist --transforms imports\"",
-    "dev": "concurrently --kill-others-on-fail \"webpack-dev-server --open --mode development -d\" \"nodemon --exec sucrase-node ./server \"",
-    "start": "concurrently --kill-others-on-fail \"node ./dist\"",
-    "server": "sucrase-node ./server/",
-    "server:debug": "nodemon --inspect sucrase-node ./server/",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "build": "cross-env NODE_ENV=production concurrently --kill-others-on-fail \"webpack -p --progress\" \"sucrase ./server -d ./dist --transforms imports\"",
+    "dev": "cross-env NODE_ENV=development concurrently --kill-others-on-fail \"webpack-dev-server --open --mode development -d\" \"nodemon --exec sucrase-node ./server \"",
+    "start": "cross-env NODE_ENV=production concurrently --kill-others-on-fail \"node ./dist\"",
+    "server": "cross-env NODE_ENV=development sucrase-node ./server/",
+    "server:debug": "cross-env NODE_ENV=development nodemon --exec sucrase-node ./server/",
+    "test": "cross-env NODE_ENV=test jest",
+    "test:watch": "cross-env NODE_ENV=test jest --watch",
+    "test:coverage": "cross-env NODE_ENV=test jest --coverage"
   },
   "jest": {
     "setupFilesAfterEnv": [
@@ -66,6 +66,7 @@
     "@types/webpack": "^4.41.21",
     "babel-jest": "^26.3.0",
     "chokidar": "^3.4.0",
+    "cross-env": "^7.0.2",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.3",
     "eslint": "^7.6.0",
@@ -73,7 +74,8 @@
     "jest": "^26.3.0",
     "nodemon": "^2.0.4",
     "path": "^0.12.7",
-    "react-test-renderer": "^16.13.1"
+    "react-test-renderer": "^16.13.1",
+    "supertest": "^4.0.2"
   },
   "resolutions": {
     "chokidar": "^3.4.0"
