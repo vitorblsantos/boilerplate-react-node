@@ -75,7 +75,8 @@
     "nodemon": "^2.0.4",
     "path": "^0.12.7",
     "react-test-renderer": "^16.13.1",
-    "supertest": "^4.0.2"
+    "supertest": "^4.0.2",
+    "webpack-bundle-analyzer": "^3.8.0"
   },
   "resolutions": {
     "chokidar": "^3.4.0"

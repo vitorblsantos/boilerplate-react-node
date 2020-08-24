@@ -1,5 +1,6 @@
 'use strict';
 
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const BundleTracker = require('webpack-bundle-tracker');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
@@ -11,23 +12,24 @@ module.exports = {
 	entry: path.resolve(__dirname, './client/index.js'),
 	output: {
 		path: path.resolve(__dirname, './dist/view/'),
-		filename: 'bundle.js',
+		filename: '[name].[contenthash:4].js',
 	},
 
 	devtool: 'inline-source-map',
 	devServer: {
-		contentBase: __dirname + '/dist/view' 
+		contentBase: __dirname + '/dist/view'
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
 			template: path.resolve(__dirname, './client/src/index.html'),
 		}),
-		new BundleTracker({filename: './webpack-stats.json'}),
+		new BundleTracker({ filename: './webpack-stats.json' }),
 		new webpack.DefinePlugin({
 			'process.env': {
 				'NODE_ENV': JSON.stringify(process.env.environment),
 			}
-  		})
+		}),
+		// new BundleAnalyzerPlugin()
 	],
 	module: {
 		rules: [
@@ -42,6 +44,20 @@ module.exports = {
 		fs: "empty"
 	},
 	optimization: {
-        splitChunks: false,
-    },
+		runtimeChunk: 'single',
+		splitChunks: {
+			chunks: 'all',
+			maxInitialRequests: Infinity,
+			minSize: 0,
+			cacheGroups: {
+				vendor: {
+					test: /[\\/]node_modules[\\/]/,
+					name(module) {
+						const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+						return `modules_${packageName.replace('@', '')}`;
+					},
+				}
+			}
+		}
+	}
 };
