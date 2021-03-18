@@ -1,9 +1,9 @@
-import { Router } from 'express';
+import { Router } from 'express'
 
-const router = Router();
+const router = Router()
 
-router.get('/api', function(req,res){
-    res.status(200).send('Boilerplate React Node');
-});
+router.get('/api', function (_, res) {
+  res.status(200).json({ message: 'Boilerplate React Node' })
+})
 
-export default router;
+export default router

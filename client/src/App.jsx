@@ -1,8 +1,8 @@
-import React from 'react';
-import Hello from './components/hello.jsx';
+import React from 'react'
+import Base from './components/_base.jsx'
 
-const App = () => {
-	return <Hello />;
-};
+const App = () => (
+  <Base />
+)
 
-export default App;
+export default App
