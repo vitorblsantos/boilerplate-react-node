@@ -1,0 +1,33 @@
+{
+  "name": "Boilerplate React Node",
+  "short_name": "React Node",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "description": "A simply Boilerplate using React/Node",
+  "icons": [{
+    "src": "./images/icon.webp",
+    "sizes": "48x48",
+    "type": "image/webp"
+  }, {
+    "src": "./images/icon.webp",
+    "sizes": "72x72",
+    "type": "image/webp"
+  }, {
+    "src": "./images/icon.webp",
+    "sizes": "96x96",
+    "type": "image/webp"
+  }, {
+    "src": "./images/icon.webp",
+    "sizes": "144x144",
+    "type": "image/webp"
+  }, {
+    "src": "./images/icon.webp",
+    "sizes": "168x168",
+    "type": "image/webp"
+  }, {
+    "src": "./images/icon.webp",
+    "sizes": "192x192",
+    "type": "image/webp"
+  }]
+}
