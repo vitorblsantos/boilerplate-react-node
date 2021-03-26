@@ -1,6 +1,6 @@
 {
   "name": "boilerplate-react-node",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Boilerplate React Node",
   "repository": "https://github.com/vitorblsantos/boilerplate-react-node",
   "author": "Vitor Santos",
@@ -12,11 +12,14 @@
     "Boilerplate Node",
     "Boilerplate React Node"
   ],
+  "engines": {
+    "node": "12.x"
+  },
   "scripts": {
-    "build": "cross-env NODE_ENV=production concurrently --kill-others-on-fail \"mkdir build\" \"webpack -p --progress\" \"sucrase ./server -d ./build/server/ --transforms imports\"",
+    "build": "cross-env NODE_ENV=production concurrently --kill-others-on-fail \"rm -rf build; mkdir build\" \"webpack -p --progress\" \"sucrase ./server -d ./build/server/ --transforms imports\"",
     "dev": "cross-env NODE_ENV=development concurrently --kill-others-on-fail \"webpack-dev-server --open --mode development -d\" \"nodemon --exec sucrase-node ./server \"",
     "lint": "concurrently --kill-others-on-fail \"eslint ./client/**/*.{js,jsx}\" \"eslint ./server/**/*.js\"",
-    "start": "cross-env NODE_ENV=production concurrently --kill-others-on-fail \"node ./build\"",
+    "start": "cross-env NODE_ENV=production concurrently --kill-others-on-fail \"node ./build/server\"",
     "server": "cross-env NODE_ENV=development sucrase-node ./server/",
     "server:debug": "cross-env NODE_ENV=development nodemon --exec sucrase-node ./server/",
     "test": "cross-env NODE_ENV=test jest",
@@ -81,7 +84,8 @@
     "path": "^0.12.7",
     "react-test-renderer": "^16.13.1",
     "supertest": "^4.0.2",
-    "webpack-bundle-analyzer": "^3.8.0"
+    "webpack-bundle-analyzer": "^3.8.0",
+    "webpack-manifest-plugin": "^3.1.0"
   },
   "resolutions": {
     "chokidar": "^3.4.0"

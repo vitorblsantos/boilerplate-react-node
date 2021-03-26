@@ -1,5 +1,5 @@
 import 'dotenv/config'
 
-import Server from './app'
+import App from './app'
 
-Server.listen(process.env.PORT || 5000)
+App.listen(process.env.PORT || 5000)
