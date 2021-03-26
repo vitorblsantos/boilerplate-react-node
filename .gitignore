@@ -58,7 +58,7 @@ node_modules
 # Files
 .cache
 .cache/
-build/
+build
 psd
 thumb
 sketch
