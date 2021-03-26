@@ -2,24 +2,26 @@
 
 const BundleTracker = require('webpack-bundle-tracker')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
 const path = require('path')
 const webpack = require('webpack')
 
 module.exports = {
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   devServer: {
     contentBase: path.resolve(__dirname)
   },
-  entry: path.resolve(__dirname, './client/index.js'),
+  entry: path.resolve(__dirname, './client/'),
   output: {
-    path: path.resolve(__dirname, './build/client'),
-    filename: '[name].[contenthash:4].js'
+    path: path.resolve(__dirname, './build/client/'),
+    filename: '[name].js'
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './client/src/index.html')
     }),
-    new BundleTracker({ filename: './webpack-stats.json' }),
+    new BundleTracker({ filename: 'webpack-stats.json' }),
+    new WebpackManifestPlugin({ filename: 'manifest.json' }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     })
@@ -47,7 +49,7 @@ module.exports = {
           test: /[\\/]node_modules[\\/]/,
           name (module) {
             const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1]
-            return `modules_${packageName.replace('@', '')}`
+            return `${packageName.replace('@', '')}`
           }
         }
       }
