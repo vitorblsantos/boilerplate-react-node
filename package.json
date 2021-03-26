@@ -1,6 +1,6 @@
 {
   "name": "boilerplate-react-node",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Boilerplate React Node",
   "repository": "https://github.com/vitorblsantos/boilerplate-react-node",
   "author": "Vitor Santos",
@@ -13,10 +13,11 @@
     "Boilerplate React Node"
   ],
   "engines": {
-    "node": "12.x"
+    "node": "12.x",
+    "yarn": "1.22.x"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production concurrently --kill-others-on-fail \"rm -rf build; mkdir build\" \"webpack -p --progress\" \"sucrase ./server -d ./build/server/ --transforms imports\"",
+    "build": "cross-env NODE_ENV=production concurrently --kill-others-on-fail \"rm -rf build; mkdir build\" \"webpack --mode production\" \"sucrase ./server -d ./build/server/ --transforms imports\"",
     "dev": "cross-env NODE_ENV=development concurrently --kill-others-on-fail \"webpack-dev-server --open --mode development -d\" \"nodemon --exec sucrase-node ./server \"",
     "lint": "concurrently --kill-others-on-fail \"eslint ./client/**/*.{js,jsx}\" \"eslint ./server/**/*.js\"",
     "start": "cross-env NODE_ENV=production concurrently --kill-others-on-fail \"node ./build/server\"",
