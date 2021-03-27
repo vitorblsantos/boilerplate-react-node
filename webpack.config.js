@@ -31,9 +31,10 @@ module.exports = {
       {
         test: /\.(js|jsx)?$/,
         exclude: /(node_modules|build)/,
-        loader: 'babel',
+        loader: 'babel-loader',
         query: {
-          presets: ['react']
+          plugins: ['@babel/transform-runtime'],
+          presets: ['@babel/preset-env']
         }
       }
     ]
