@@ -17,10 +17,10 @@
     "yarn": "1.22.x"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production concurrently --kill-others-on-fail \"rm -rf build; mkdir build\" \"webpack -p --progress\" \"sucrase ./server -d ./build/server/ --transforms imports\"",
+    "build": "cross-env NODE_ENV=production concurrently --kill-others-on-fail \"rm -rf build; mkdir build\" \"webpack --mode=production\" \"sucrase ./server -d ./build/server/ --transforms imports\"",
     "dev": "cross-env NODE_ENV=development concurrently --kill-others-on-fail \"webpack-dev-server --open --mode development -d\" \"nodemon --exec sucrase-node ./server \"",
     "lint": "concurrently --kill-others-on-fail \"eslint ./client/**/*.{js,jsx}\" \"eslint ./server/**/*.js\"",
-    "start": "cross-env NODE_ENV=production concurrently --kill-others-on-fail \"node ./build/server\"",
+    "start": "node ./build/server",
     "server": "cross-env NODE_ENV=development sucrase-node ./server/",
     "server:debug": "cross-env NODE_ENV=development nodemon --exec sucrase-node ./server/",
     "test": "cross-env NODE_ENV=test jest",
@@ -35,8 +35,10 @@
   },
   "dependencies": {
     "@babel/core": "^7.13.13",
-    "@babel/preset-env": "^7.11.0",
+    "@babel/plugin-transform-runtime": "^7.13.10",
+    "@babel/preset-env": "^7.13.12",
     "@babel/preset-react": "^7.10.4",
+    "@babel/runtime": "^7.13.10",
     "axios": "^0.21.1",
     "babel-loader": "^8.1.0",
     "body-parser": "^1.19.0",
@@ -52,6 +54,7 @@
     "react-is": "^16.13.1",
     "source-map-resolve": "^0.6.0",
     "sucrase": "^3.15.0",
+    "typescript": "^4.2.3",
     "webpack": "^4.44.1",
     "webpack-bundle-tracker": "^1.0.0-alpha.1",
     "webpack-cli": "^3.3.12",
